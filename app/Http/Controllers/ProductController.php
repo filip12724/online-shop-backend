@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
+    public function highestDiscountProduct() : JsonResponse {
+
+       $product = Product::orderBy('discount', 'desc')->first();
+       return response()->json($product);
+
+    }
+
     public function index()
     {
        return response()->json(Product::all());
@@ -26,9 +32,12 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id) : JsonResponse
     {
-        //
+        $product = Product::find($id);
+        return $product 
+            ? response()->json($product)
+            : response()->json(['error' => 'Product not found'], 404);
     }
 
     /**

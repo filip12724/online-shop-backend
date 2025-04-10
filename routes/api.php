@@ -8,4 +8,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::get('/products/highest-discount',[ProductController::class, 'highestDiscountProduct']);
 Route::apiResource('products',ProductController::class);

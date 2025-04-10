@@ -20,6 +20,7 @@ return new class extends Migration
             $table->tinyInteger('discount')->nullable();
             $table->string('image')->nullable();
             $table->integer('stock');
+            $table->tinyInteger('rating');
 
             $table->timestamps();
         });
