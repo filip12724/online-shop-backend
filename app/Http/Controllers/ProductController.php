@@ -9,12 +9,12 @@ use Illuminate\Http\JsonResponse;
 class ProductController extends Controller
 {
    
-    public function highestDiscountProduct() : JsonResponse {
+    // public function highestDiscountProduct() : JsonResponse {
 
-       $product = Product::orderBy('discount', 'desc')->first();
-       return response()->json($product);
+    //    $product = Product::orderBy('discount', 'desc')->first();
+    //    return response()->json($product);
 
-    }
+    // }
 
     public function index()
     {

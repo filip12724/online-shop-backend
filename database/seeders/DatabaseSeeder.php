@@ -6,6 +6,8 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\Discount;
+use App\Models\ProductDiscount;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +24,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Filip',
             'email' => 'bondzulicfilip@gmail.com',
         ]);
+
+        Discount::factory(20)->create();
+
+        // Attach discounts to products
+        $products = Product::all();
+        $discounts = Discount::all();
+
+        // For each product, attach 1-3 random discounts
+        foreach ($products as $product) {
+            $randomDiscounts = $discounts->random(rand(1, 3));
+            $product->discounts()->attach($randomDiscounts->pluck('id'));
+        }
     }
 }

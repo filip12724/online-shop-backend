@@ -9,5 +9,5 @@ Route::get('/user', function (Request $request) {
 });
 
 
-Route::get('/products/highest-discount',[ProductController::class, 'highestDiscountProduct']);
+// Route::get('/products/highest-discount',[ProductController::class, 'highestDiscountProduct']);
 Route::apiResource('products',ProductController::class);
